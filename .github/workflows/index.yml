@@ -23,7 +23,7 @@ jobs:
             ssh-add ~/.ssh/ssh_key
             git checkout .
             git clean -df
-            git pull origin main
+            git pull origin master
             git status
             export NVM_DIR=~/.nvm
             source ~/.nvm/nvm.sh
