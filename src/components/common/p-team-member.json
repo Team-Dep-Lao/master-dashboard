@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_common_p_team_members",
+  "info": {
+    "displayName": "P Team Member",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    },
+    "profile": {
+      "type": "customField",
+      "options": {
+        "output": "HTML",
+        "preset": "standard"
+      },
+      "customField": "plugin::ckeditor.CKEditor"
+    }
+  }
+}

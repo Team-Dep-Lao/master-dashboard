@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_common_p_project_sections",
+  "info": {
+    "displayName": "P Project Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "sub_title": {
+      "type": "string"
+    },
+    "desc": {
+      "type": "text"
+    },
+    "gallery": {
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": true,
+      "required": false
+    },
+    "link_demo": {
+      "type": "string"
+    },
+    "link_code": {
+      "type": "string"
+    }
+  }
+}

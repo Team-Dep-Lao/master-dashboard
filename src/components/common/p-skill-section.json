@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_common_p_skill_sections",
+  "info": {
+    "displayName": "P Skill Section"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Frontend",
+        "Backend",
+        "Other"
+      ],
+      "default": "Other",
+      "required": true
+    }
+  }
+}

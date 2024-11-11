@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_contacts",
+  "info": {
+    "singularName": "user-contact",
+    "pluralName": "user-contacts",
+    "displayName": "User Contact",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "text"
+    },
+    "IP": {
+      "type": "text",
+      "private": true
+    }
+  }
+}

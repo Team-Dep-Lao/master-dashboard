@@ -1,0 +1,48 @@
+name: Remote ssh command (for master branch)
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    name: Build Master Admin Dashboard production development
+    runs-on: ubuntu-latest
+    steps:
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.DEV_SSH_HOST }}
+          username: ${{ secrets.DEV_USERNAME }}
+          key: ${{ secrets.DEV_SSH_KEY }}
+          port: ${{ secrets.DEV_PORT }}
+
+          script: |
+            whoami
+            cd ~/project/dashboard.kiendev.click/
+            eval "$(ssh-agent -s)"
+            ssh-add ~/.ssh/ssh_key
+            git checkout .
+            git clean -df
+            git pull origin main
+            git status
+            export NVM_DIR=~/.nvm
+            source ~/.nvm/nvm.sh
+            yarn
+            rm -rf .env
+            echo "HOST=0.0.0.0" >> .env
+            echo "PORT=1338" >> .env
+            echo "APP_KEYS=nB8jNVlv8OBGZI+pTxMcCg==,y1HWiSH85TaijLRbnCAb3g==,xx9mh9kNvVY6oymkM4slzg==,sUBWpNIUXbmxb/4zBxoJyg==" >> .env
+            echo "API_TOKEN_SALT=7mdhTzQLE98EOP/ni+OTzg==" >> .env
+            echo "ADMIN_JWT_SECRET=2eITioVnz8SsScXLIZzgKQ==" >> .env
+            echo "TRANSFER_TOKEN_SALT=QWsg9AADuYVCnFHVVulhMA==" >> .env
+            echo "DATABASE_CLIENT=mysql2" >> .env
+            echo "DATABASE_HOST=127.0.0.1" >> .env
+            echo "DATABASE_PORT=3306" >> .env
+            echo "DATABASE_NAME=master_admin" >> .env
+            echo "DATABASE_USERNAME=${{ secrets.DEV_DB_USERNAME }}" >> .env
+            echo "DATABASE_PASSWORD=${{ secrets.DEV_DB_PASSWORD }}" >> .env
+            echo "DATABASE_SSL=false" >> .env
+            echo "JWT_SECRET=dGmIZALgT2vwoO2viOLq3w==" >> .env
+            echo "NODE_ENV=production" >> .env
+            yarn build
+            pm2 reload MasterAdmin

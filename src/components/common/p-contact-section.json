@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_common_p_contact_sections",
+  "info": {
+    "displayName": "P Contact Section"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "link": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
